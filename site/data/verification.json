@@ -1,0 +1,13 @@
+{
+ "passed": true,
+ "figures": 132,
+ "implementations": 3,
+ "glm_terms": 13,
+ "pilot_figures": 9,
+ "glm_max_rel_diff": 2.1706489913531534e-07,
+ "external_mean_abs_diff": 0.026,
+ "external_if_shifted": {
+  "-1": 0.138,
+  "1": 0.163
+ }
+}

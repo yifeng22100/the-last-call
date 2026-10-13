@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Last Call</title>
+<meta name="description" content="When should a bank stop calling a client? A next-call model, a stopping rule priced in money, and a pilot plan, built on the UCI Bank Marketing data and verified three ways.">
+<meta property="og:title" content="The Last Call: when should a bank stop calling?">
+<meta property="og:description" content="41,188 clients, 105,754 calls, 2008 to 2010. Tested month by month on data the model never saw. Every figure computed three independent ways.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2314213d'/%3E%3Cpath d='M7 22h3v-5H7zm5 0h3v-8h-3zm5 0h3v-4h-3zm5 0h3v-2h-3z' fill='%23fff'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <a class="brand" href="#top">The Last Call</a>
+    <nav aria-label="Sections">
+      <a href="#mistakes">Findings</a>
+      <a href="#simulator">Simulator</a>
+      <a href="#pilot">Pilot</a>
+      <a href="#analyst">AI analyst</a>
+      <a href="#verified">Verification</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero wrap" id="top">
+  <h1>When should a bank stop calling?</h1>
+  <p class="lede">A Portuguese bank phoned 41,188 clients 105,754 times between 2008 and 2010 to sell term deposits (Moro, Rita, &amp; Cortez, 2014). Most analyses of this data ask <em>who</em> will say yes. A call centre needs to know something else: <strong>is the next call to this person worth making?</strong></p>
+
+  <figure class="hero-strip" aria-labelledby="strip-cap">
+    <div class="strip-head">
+      <p id="strip-cap" class="fig-title">Chance that call number <i>k</i> ends in a yes, among clients still being called</p>
+      <p class="fig-note">Bars: success rate of that call. Whiskers: 95% Wilson interval (Wilson, 1927). Hover or tap a bar.</p>
+    </div>
+    <div id="hero-chart" class="chart" role="img" aria-label="Success rate by call number"></div>
+    <p class="strip-readout" id="strip-readout" aria-live="polite"></p>
+  </figure>
+
+  <div class="hero-actions">
+    <a class="button primary" href="#simulator">Open the simulator</a>
+    <a class="button" href="https://github.com/yifeng22100/the-last-call">Code and data</a>
+  </div>
+</section>
+
+<section class="wrap prose" id="mistakes">
+  <h2>Three traps in common analyses of this dataset</h2>
+  <p>It is a widely used teaching dataset with many public notebooks on Kaggle and GitHub. Before building anything, I reproduced the usual approach and stress-tested it. The original authors warned about two of these problems (Moro, Cortez, &amp; Rita, 2014), yet many public notebooks still fall into them.</p>
+
+  <article class="finding">
+    <h3>A 0.95 model that can't be used</h3>
+    <p>Train on all 20 columns with a shuffled train/test split and you get an AUC of <span data-fact="auc/typical_all_inputs_random_split"></span>. Part of that comes from <code>duration</code>, the length of the call, which is only known after the call ends: a textbook case of leakage (Kaufman et al., 2012). Remove it and the AUC is <span data-fact="auc/without_duration_random_split"></span>. Then test the honest model the way it would be used, trained on past months and scored on the next one (Tashman, 2000), and it falls to <span data-fact="auc/precall_walk_forward_gradient_boosting"></span>.</p>
+    <figure class="wide">
+      <p class="fig-title">Same model family, four ways of testing it (ROC AUC; 0.5 is a coin flip)</p>
+      <div id="auc-chart" class="chart" role="img" aria-label="AUC under four testing setups"></div>
+      <p class="fig-note">Gradient boosting, identical settings throughout. Shuffled = 5-fold stratified cross-validation. Future months = expanding-window forecast, March 2009 to November 2010.</p>
+    </figure>
+  </article>
+
+  <article class="finding">
+    <h3>More calls don't convert worse. The counting does.</h3>
+    <p>Group clients by how many times they were called and conversion seems to fall off a cliff after the first call. That chart double-counts: anyone who says yes on call 1 is never called again, so the "called 3 times" group contains only people who already said no twice. Measured correctly, as the success rate of each call among the people still being called, the second call is <span data-fact="call2_vs_call1" data-format="pct0"></span> as productive as the first. A causal-inference tutorial on this dataset makes the same point (<i>The effects of marketing decisions</i>, n.d.).</p>
+    <figure class="wide">
+      <p class="fig-title">Two ways to read the same calls</p>
+      <div id="counting-chart" class="chart" role="img" aria-label="Naive conversion by total calls versus success rate of each call"></div>
+      <div class="legend" id="counting-legend"></div>
+    </figure>
+    <p>Adjusting for age, channel, previous outcome and the interest rate in a logistic model with one row per call, calls 2 and 3 are statistically indistinguishable from call 1 (odds ratios <span data-fact="glm/odds_ratios/C(call)[T.c02]/or_" data-format="num2"></span> and <span data-fact="glm/odds_ratios/C(call)[T.c03]/or_" data-format="num2"></span>). The decline starts at call 4 (<span data-fact="glm/odds_ratios/C(call)[T.c04]/or_" data-format="num2"></span>) and by call 10 the odds are less than a third of call 1's (<span data-fact="glm/odds_ratios/C(call)[T.c10plus]/or_" data-format="num2"></span>).</p>
+  </article>
+
+  <article class="finding">
+    <h3>The economy moved the target nearly fifteenfold</h3>
+    <p>The file is in date order. Split it into eight equal chronological slices and the yes rate climbs from <span data-fact="drift/eighths_conversion/0" data-format="pct1"></span> to <span data-fact="drift/eighths_conversion/7" data-format="pct1"></span> (<span data-fact="drift/ratio_last_to_first_eighth" data-format="num1"></span>×) as the slices' average 3-month Euribor falls from <span data-fact="drift/eighths_euribor/0" data-format="num1"></span>% to <span data-fact="drift/eighths_euribor/7" data-format="num1"></span>% through the financial crisis. A model frozen at the end of 2008 predicts <span data-fact="frozen_model/2010/frozen_gradient_boosting" data-format="pct1"></span> for 2010. The real figure was <span data-fact="frozen_model/2010/actual" data-format="pct1"></span>. A shuffled split hides this completely, because it mixes 2010 rows into training. This is concept drift (Gama et al., 2014).</p>
+    <figure class="wide">
+      <p class="fig-title">Share of contacted clients who subscribed, by month</p>
+      <div id="drift-chart" class="chart" role="img" aria-label="Monthly conversion and a frozen 2008 model's prediction"></div>
+      <div class="legend" id="drift-legend"></div>
+      <p class="fig-title small-multiple">3-month Euribor in the same months (%)</p>
+      <div id="euribor-chart" class="chart short" role="img" aria-label="Monthly Euribor rate"></div>
+      <p class="fig-note">No calls were recorded in September 2008 or in January and February of 2009 and 2010; lines break there. Months with few clients are noisy (October 2008 had only 67); hover a point for its count. Euribor values are the dataset's own and match the official monthly averages (European Central Bank, 2026) to within <span data-fact="verification/external_mean_abs_diff"></span> percentage points on average.</p>
+    </figure>
+  </article>
+</section>
+
+<section class="band" id="method">
+  <div class="wrap prose">
+    <h2>What I built instead</h2>
+    <p><strong>A next-call model.</strong> Each client is expanded into one row per call, so the model estimates the chance that <em>the next call</em> succeeds, given who the client is, how many times they've been called and the economic context. This is a discrete-time hazard model (Singer &amp; Willett, 1993), fitted with scikit-learn (Pedregosa et al., 2011). It only uses information known before the call: no duration, no total call count, no timing of the last contact.</p>
+    <p><strong>Tested the way it would run.</strong> Every month from March 2009 is predicted by a model trained only on earlier months. Four candidate models were declared up front and the winner was picked on 2009 alone, with 2010 held back. The pick was plain logistic regression. Gradient boosting came last when given the economic indicators (it kept <span data-fact="model_selection/candidates/gradient_boosting/yes_kept/0.5" data-format="pct0"></span> of 2009 subscriptions at half the calls, against <span data-fact="model_selection/candidates/logistic/yes_kept/0.5" data-format="pct0"></span> for logistic regression) and did fine without them (<span data-fact="model_selection/candidates/gradient_boosting_no_macro/yes_kept/0.5" data-format="pct0"></span>). Tree models can't extrapolate past the interest rates seen in training, and 2009 rates were far below anything in 2008.</p>
+    <p><strong>A stopping rule priced in money.</strong> Keep calling while the predicted chance of a yes is at least the cost of a call divided by the value of a new deposit. That rule is only safe if the probabilities are honest, so the model runs behind three safeguards, described in the pilot section below.</p>
+  </div>
+</section>
+
+<section class="wrap" id="simulator">
+  <div class="prose">
+    <h2>Simulator</h2>
+    <p>Set what a new deposit is worth to the bank and what one call costs. The rule and every figure below update from the out-of-sample period (March 2009 to November 2010: <span data-fact="money_rule/totals/clients" data-format="int"></span> clients, <span data-fact="money_rule/totals/calls" data-format="int"></span> calls, <span data-fact="money_rule/totals/yes" data-format="int"></span> subscriptions). The defaults are illustrative, not the bank's real economics.</p>
+  </div>
+
+  <div class="sim">
+    <form class="sim-inputs" id="sim-form" aria-label="Simulator inputs">
+      <label for="value-in">Value of one new deposit to the bank</label>
+      <div class="field"><span>€</span><input id="value-in" type="number" min="1" max="2000" step="1" value="100" inputmode="decimal"></div>
+      <input id="value-range" type="range" min="10" max="500" step="5" value="100" aria-label="Value of one new deposit">
+
+      <label for="cost-in">Cost of one call</label>
+      <div class="field"><span>€</span><input id="cost-in" type="number" min="0.1" max="100" step="0.1" value="5" inputmode="decimal"></div>
+      <input id="cost-range" type="range" min="0.5" max="25" step="0.5" value="5" aria-label="Cost of one call">
+
+      <p class="rule" id="sim-rule" aria-live="polite"></p>
+    </form>
+
+    <div class="sim-out">
+      <dl class="readouts" id="sim-readouts"></dl>
+      <figure>
+        <p class="fig-title">Subscriptions kept against calls made, out-of-sample</p>
+        <div id="frontier-chart" class="chart tall" role="img" aria-label="Share of subscriptions kept versus share of calls made, by policy"></div>
+        <div class="legend" id="frontier-legend"></div>
+        <p class="fig-note">The Last Call curve includes the safeguards, so it never drops below the <span data-fact="safeguards/shadow_share_of_calls" data-format="pct0"></span> of calls made in months when the model was in shadow mode. The ring marks your current setting.</p>
+      </figure>
+    </div>
+  </div>
+
+  <div class="prose">
+    <h3>How it compares, with uncertainty</h3>
+    <p>Share of all subscriptions kept when only half of the bank's calls are made. Brackets are 95% intervals from a cluster bootstrap over clients (Efron &amp; Tibshirani, 1994; 1,000 resamples; predictions held fixed).</p>
+  </div>
+  <div class="table-wrap"><table class="data" id="compare-table"></table></div>
+  <p class="table-note prose" id="compare-note"></p>
+</section>
+
+<section class="band" id="pilot">
+  <div class="wrap prose">
+    <h2>Ready for a pilot</h2>
+    <p>Here is how the rule would have behaved if it had gone live in March 2009, using only information available at the start of each month.</p>
+    <ul class="safeguards">
+      <li><strong>Shadow mode first.</strong> In its first live month the model scores every call but cuts none, and predictions are compared with outcomes.</li>
+      <li><strong>Monthly recalibration.</strong> Each month the predictions are shifted so that last month's would have matched last month's real success rate, a standard update known as recalibration-in-the-large (Steyerberg, 2019).</li>
+      <li><strong>Drift alarm.</strong> If last month's odds were off by more than 3×, the model is not trusted: back to shadow mode, every call is made, and an analyst reviews it.</li>
+    </ul>
+    <figure class="wide">
+      <p class="fig-title">What the safeguards did, month by month</p>
+      <div id="guard-strip" class="guard-strip"></div>
+      <div class="legend" id="guard-legend"></div>
+    </figure>
+    <p>Why this matters: in March 2009, right after the rate collapse, the model trained on 2008 gave <span data-fact="regime_break/share_predicted_below_1pct" data-format="pct0"></span> of that month's <span data-fact="regime_break/calls" data-format="int"></span> calls less than a 1% chance, and <span data-fact="regime_break/observed_success_rate" data-format="pct1"></span> of them succeeded. No model trained before a regime break can know the new level. The safeguards catch that, and with them the calls the rule cuts succeed at about the rate the model predicted (<span data-fact="money_rule/by_value_to_cost/20/cut_calls_success_rate" data-format="pct1"></span> observed at a 5% threshold). <strong>I designed these safeguards after seeing the 2009 to 2010 results, so for this part those years are not a clean test.</strong> The pilot is.</p>
+
+    <h3>Pilot plan</h3>
+    <p>The obvious pilot, randomising clients to the old process or the rule and comparing net value per client, needs an impractically large sample unless calls are expensive relative to deposits, because the rule's gain per client is small against the noise. A sharper test goes straight at the decision. Calls the rule would cut are worth cutting only if their success rate is below break-even (cost ÷ value). So <strong>make a random half of those flagged calls anyway</strong> and test whether they succeed less often than break-even.</p>
+    <ol class="steps">
+      <li><strong>Weeks 1 to 2: shadow.</strong> Score every scheduled call and change nothing. Check that predictions match outcomes before acting.</li>
+      <li><strong>From week 3: live, with a holdback.</strong> The rule flags calls below break-even. Half of the flagged calls, chosen at random, are made anyway. Primary test: is their success rate below break-even? (One-sided, 5% significance, 80% power.) Guardrails: complaints, opt-outs, and the age check below.</li>
+      <li><strong>Launch decision.</strong> Cut flagged calls fully once the test concludes. Keep a small holdback, the drift alarm and monthly recalibration in production as ongoing monitoring.</li>
+    </ol>
+    <p>Sample sizes, computed from what the rule did in the out-of-sample period and checked independently in R:</p>
+  </div>
+  <div class="wrap"><div class="table-wrap"><table class="data" id="pilot-table"></table></div>
+  <p class="table-note prose" id="pilot-note"></p></div>
+  <div class="wrap prose">
+    <h3>Who loses calls under the rule</h3>
+    <p>Age is the attribute most often treated as sensitive in this dataset, usually split at 25 and 60 (Le Quy et al., 2022). At a 5% threshold, share of each age group's subscriptions that are still captured, and share of their calls that are still made:</p>
+  </div>
+  <div class="wrap"><div class="table-wrap"><table class="data" id="fair-table"></table></div></div>
+</section>
+
+<section class="wrap" id="analyst">
+  <div class="prose">
+    <h2>Ask the analyst</h2>
+    <p>An AI analyst (Claude) that answers only from this study's verified figures and your current simulator setting. It writes a briefing for a manager, critiques the pilot or answers your own question. It runs in your browser with your own Anthropic API key, which goes straight to Anthropic and nowhere else. No key? The rule-based briefing works without one.</p>
+  </div>
+  <div class="analyst">
+    <div class="key-row">
+      <label for="api-key">Anthropic API key</label>
+      <input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-…">
+      <label class="check"><input type="checkbox" id="remember-key"> Remember on this device</label>
+    </div>
+    <div class="prompt-row">
+      <button type="button" class="button" data-ask="brief">Brief my manager on this setting</button>
+      <button type="button" class="button" data-ask="risks">What could go wrong in the pilot?</button>
+      <button type="button" class="button" data-ask="explain">Explain the method to a non-technical executive</button>
+    </div>
+    <form class="ask-row" id="ask-form">
+      <label for="ask-in" class="visually-hidden">Your question</label>
+      <input id="ask-in" type="text" placeholder="Or ask your own question about the study">
+      <button type="submit" class="button primary">Ask</button>
+    </form>
+    <div class="answer" id="answer" aria-live="polite"></div>
+    <div class="answer-actions"><button type="button" class="button quiet" id="copy-answer" hidden>Copy answer</button></div>
+  </div>
+</section>
+
+<section class="band" id="verified">
+  <div class="wrap prose">
+    <h2>Every number on this page, computed three times</h2>
+    <p>Figures are never typed by hand. One build script writes them all to a single file, and two independent re-implementations recompute them from the raw data: one in plain Python with no data libraries, one in R. The R version also refits the statistical model with its own <code>glm()</code>. A comparison script fails the build on any mismatch, and the rebuilt calendar is checked against the European Central Bank's official Euribor series.</p>
+    <dl class="verify-grid" id="verify-grid"></dl>
+    <p><a href="https://github.com/yifeng22100/the-last-call/blob/main/verify/REPORT.md">Read the full verification report</a>. The raw file is byte-identical to the official UCI release (SHA-256 <code class="hash" data-fact="dataset/sha256"></code>).</p>
+  </div>
+</section>
+
+<section class="wrap prose" id="limits">
+  <h2>Limits</h2>
+  <ul>
+    <li>One bank, one product, 2008 to 2010. The public file is a subset of the authors' 2008 to 2013 data (52,944 contacts, 150 features), so the results here are not comparable like-for-like with the paper's.</li>
+    <li>The data is observational. The rule estimates what the next call is likely to yield; it does not prove that calling causes the yes. Only the randomised pilot can show that.</li>
+    <li>The one-row-per-call expansion assumes the bank stops calling a client once they subscribe, and that client details and channel are the same on every call of a campaign.</li>
+    <li>On the 2010 holdout, the next-call model and a plain client-scoring model perform the same at half the calls. Its advantage there is the money-priced stopping rule, not better ranking.</li>
+    <li>The economic indicators are those at the time of contact. Some are published quarterly with a delay, so a live system would use the latest available value.</li>
+  </ul>
+
+  <h2 id="references">References</h2>
+  <ol class="refs">
+    <li>Efron, B., &amp; Tibshirani, R. J. (1994). <i>An introduction to the bootstrap</i>. Chapman &amp; Hall/CRC. https://doi.org/10.1201/9780429246593</li>
+    <li>European Central Bank. (2026). <i>Euribor 3-month, historical close, average of observations through period</i> (Series FM.M.U2.EUR.RT.MM.EURIBOR3MD_.HSTA) [Data set]. ECB Data Portal. Retrieved October 13, 2026, from https://data.ecb.europa.eu/</li>
+    <li>Gama, J., Žliobaitė, I., Bifet, A., Pechenizkiy, M., &amp; Bouchachia, A. (2014). A survey on concept drift adaptation. <i>ACM Computing Surveys, 46</i>(4), Article 44. https://doi.org/10.1145/2523813</li>
+    <li>Kaufman, S., Rosset, S., Perlich, C., &amp; Stitelman, O. (2012). Leakage in data mining: Formulation, detection, and avoidance. <i>ACM Transactions on Knowledge Discovery from Data, 6</i>(4), Article 15. https://doi.org/10.1145/2382577.2382579</li>
+    <li>Le Quy, T., Roy, A., Iosifidis, V., Zhang, W., &amp; Ntoutsi, E. (2022). A survey on datasets for fairness-aware machine learning. <i>WIREs Data Mining and Knowledge Discovery, 12</i>(3), Article e1452. https://doi.org/10.1002/widm.1452</li>
+    <li>Moro, S., Cortez, P., &amp; Rita, P. (2014). A data-driven approach to predict the success of bank telemarketing. <i>Decision Support Systems, 62</i>, 22–31. https://doi.org/10.1016/j.dss.2014.03.001</li>
+    <li>Moro, S., Rita, P., &amp; Cortez, P. (2014). <i>Bank marketing</i> [Data set]. UCI Machine Learning Repository. https://doi.org/10.24432/C5K306</li>
+    <li>Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., &amp; Duchesnay, É. (2011). Scikit-learn: Machine learning in Python. <i>Journal of Machine Learning Research, 12</i>, 2825–2830.</li>
+        <li>Singer, J. D., &amp; Willett, J. B. (1993). It's about time: Using discrete-time survival analysis to study duration and the timing of events. <i>Journal of Educational Statistics, 18</i>(2), 155–195. https://doi.org/10.3102/10769986018002155</li>
+    <li>Steyerberg, E. W. (2019). <i>Clinical prediction models: A practical approach to development, validation, and updating</i> (2nd ed.). Springer. https://doi.org/10.1007/978-3-030-16399-0</li>
+    <li><i>The effects of marketing decisions using the bank marketing dataset</i>. (n.d.). causallib documentation. Retrieved October 13, 2026, from https://causallib.readthedocs.io/en/latest/examples/Bank-Marketing.html</li>
+    <li>Tashman, L. J. (2000). Out-of-sample tests of forecasting accuracy: An analysis and review. <i>International Journal of Forecasting, 16</i>(4), 437–450. https://doi.org/10.1016/S0169-2070(00)00065-0</li>
+    <li>Wilson, E. B. (1927). Probable inference, the law of succession, and statistical inference. <i>Journal of the American Statistical Association, 22</i>(158), 209–212. https://doi.org/10.1080/01621459.1927.10502953</li>
+  </ol>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Data: Moro, Rita, &amp; Cortez (2014), UCI Machine Learning Repository, licensed CC BY 4.0. Analysis, code and site: <a href="https://github.com/yifeng22100/the-last-call">github.com/yifeng22100/the-last-call</a> (MIT). Historical analysis for education and demonstration; not financial advice.</p>
+  </div>
+</footer>
+
+<div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

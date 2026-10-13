@@ -1,0 +1,63 @@
+{
+ "alpha": 0.05,
+ "power": 0.8,
+ "source": "out-of-sample period 2009-03 to 2010-11, guarded rule",
+ "design_a": "client-level A/B on net value per client (two-sided)",
+ "design_b": "flagged-call holdback: success rate of flagged calls vs break-even (one-sided)",
+ "by_value_to_cost": {
+  "10": {
+   "a": {
+    "effect_per_client": 0.5086,
+    "n_per_arm": 1102,
+    "simulated_power_at_n": 0.792
+   },
+   "b": {
+    "break_even": 0.1,
+    "planning_success_rate": 0.0545,
+    "flagged_calls_to_make_formula": 227,
+    "exact_power_at_formula_n": 0.822,
+    "flagged_calls_to_make": 227,
+    "exact_power": 0.822,
+    "exact_alpha": 0.0496,
+    "flagged_calls_per_month_oos": 1006.3,
+    "months_at_oos_volume": 0.5
+   }
+  },
+  "20": {
+   "a": {
+    "effect_per_client": 0.123,
+    "n_per_arm": 78561,
+    "simulated_power_at_n": null
+   },
+   "b": {
+    "break_even": 0.05,
+    "planning_success_rate": 0.0345,
+    "flagged_calls_to_make_formula": 1094,
+    "exact_power_at_formula_n": 0.787,
+    "flagged_calls_to_make": 1103,
+    "exact_power": 0.816,
+    "exact_alpha": 0.0498,
+    "flagged_calls_per_month_oos": 670.0,
+    "months_at_oos_volume": 3.3
+   }
+  },
+  "30": {
+   "a": {
+    "effect_per_client": 0.0319,
+    "n_per_arm": 2647736,
+    "simulated_power_at_n": null
+   },
+   "b": {
+    "break_even": 0.0333,
+    "planning_success_rate": 0.0242,
+    "flagged_calls_to_make_formula": 2164,
+    "exact_power_at_formula_n": 0.806,
+    "flagged_calls_to_make": 2164,
+    "exact_power": 0.806,
+    "exact_alpha": 0.0477,
+    "flagged_calls_per_month_oos": 392.5,
+    "months_at_oos_volume": 11.0
+   }
+  }
+ }
+}

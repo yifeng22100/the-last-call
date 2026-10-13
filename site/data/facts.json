@@ -1,0 +1,1577 @@
+{
+ "dataset": {
+  "clients": 41188,
+  "subscribed": 4640,
+  "conversion": 0.1127,
+  "conversion_ci": [
+   0.1096,
+   0.1157
+  ],
+  "total_calls": 105754,
+  "first_period": "2008-05",
+  "last_period": "2010-11",
+  "months_with_data": 26,
+  "sha256": "74adfc578bf77a7ff4bb1ba4a9f8709d9e3c6907342959c2c8416847e0afb4d8"
+ },
+ "windows": {
+  "train_initial": {
+   "first": "2008-05",
+   "last": "2008-12",
+   "clients": 27690,
+   "subscribed": 1339,
+   "calls": 77513,
+   "conversion": 0.0484
+  },
+  "validation": {
+   "first": "2009-03",
+   "last": "2009-12",
+   "clients": 11440,
+   "subscribed": 2228,
+   "calls": 24320,
+   "conversion": 0.1948
+  },
+  "holdout": {
+   "first": "2010-03",
+   "last": "2010-11",
+   "clients": 2058,
+   "subscribed": 1073,
+   "calls": 3921,
+   "conversion": 0.5214
+  },
+  "out_of_sample": {
+   "first": "2009-03",
+   "last": "2010-11",
+   "clients": 13498,
+   "subscribed": 3301,
+   "calls": 28241,
+   "conversion": 0.2446
+  }
+ },
+ "by_year": {
+  "2008": {
+   "clients": 27690,
+   "subscribed": 1339,
+   "conversion": 0.0484,
+   "conversion_ci": [
+    0.0459,
+    0.0509
+   ],
+   "euribor_mean": 4.817
+  },
+  "2009": {
+   "clients": 11440,
+   "subscribed": 2228,
+   "conversion": 0.1948,
+   "conversion_ci": [
+    0.1876,
+    0.2021
+   ],
+   "euribor_mean": 1.232
+  },
+  "2010": {
+   "clients": 2058,
+   "subscribed": 1073,
+   "conversion": 0.5214,
+   "conversion_ci": [
+    0.4998,
+    0.5429
+   ],
+   "euribor_mean": 0.813
+  }
+ },
+ "per_call": [
+  {
+   "call": "1",
+   "calls_made": 41188,
+   "yes": 2300,
+   "rate": 0.0558,
+   "ci": [
+    0.0537,
+    0.0581
+   ],
+   "cum_share_of_yes": 0.4957
+  },
+  {
+   "call": "2",
+   "calls_made": 23546,
+   "yes": 1211,
+   "rate": 0.0514,
+   "ci": [
+    0.0487,
+    0.0543
+   ],
+   "cum_share_of_yes": 0.7567
+  },
+  {
+   "call": "3",
+   "calls_made": 12976,
+   "yes": 574,
+   "rate": 0.0442,
+   "ci": [
+    0.0408,
+    0.0479
+   ],
+   "cum_share_of_yes": 0.8804
+  },
+  {
+   "call": "4",
+   "calls_made": 7635,
+   "yes": 249,
+   "rate": 0.0326,
+   "ci": [
+    0.0289,
+    0.0368
+   ],
+   "cum_share_of_yes": 0.9341
+  },
+  {
+   "call": "5",
+   "calls_made": 4984,
+   "yes": 120,
+   "rate": 0.0241,
+   "ci": [
+    0.0202,
+    0.0287
+   ],
+   "cum_share_of_yes": 0.9599
+  },
+  {
+   "call": "6",
+   "calls_made": 3385,
+   "yes": 75,
+   "rate": 0.0222,
+   "ci": [
+    0.0177,
+    0.0277
+   ],
+   "cum_share_of_yes": 0.9761
+  },
+  {
+   "call": "7",
+   "calls_made": 2406,
+   "yes": 38,
+   "rate": 0.0158,
+   "ci": [
+    0.0115,
+    0.0216
+   ],
+   "cum_share_of_yes": 0.9843
+  },
+  {
+   "call": "8",
+   "calls_made": 1777,
+   "yes": 17,
+   "rate": 0.0096,
+   "ci": [
+    0.006,
+    0.0153
+   ],
+   "cum_share_of_yes": 0.9879
+  },
+  {
+   "call": "9",
+   "calls_made": 1377,
+   "yes": 17,
+   "rate": 0.0123,
+   "ci": [
+    0.0077,
+    0.0197
+   ],
+   "cum_share_of_yes": 0.9916
+  },
+  {
+   "call": "10+",
+   "calls_made": 6480,
+   "yes": 39,
+   "rate": 0.006,
+   "ci": [
+    0.0044,
+    0.0082
+   ],
+   "cum_share_of_yes": 1.0
+  }
+ ],
+ "naive_by_campaign": [
+  {
+   "campaign": "1",
+   "conversion": 0.1304,
+   "clients": 17642
+  },
+  {
+   "campaign": "2",
+   "conversion": 0.1146,
+   "clients": 10570
+  },
+  {
+   "campaign": "3",
+   "conversion": 0.1075,
+   "clients": 5341
+  },
+  {
+   "campaign": "4",
+   "conversion": 0.0939,
+   "clients": 2651
+  },
+  {
+   "campaign": "5",
+   "conversion": 0.075,
+   "clients": 1599
+  },
+  {
+   "campaign": "6",
+   "conversion": 0.0766,
+   "clients": 979
+  },
+  {
+   "campaign": "7",
+   "conversion": 0.0604,
+   "clients": 629
+  },
+  {
+   "campaign": "8",
+   "conversion": 0.0425,
+   "clients": 400
+  },
+  {
+   "campaign": "9",
+   "conversion": 0.0601,
+   "clients": 283
+  },
+  {
+   "campaign": "10+",
+   "conversion": 0.0356,
+   "clients": 1094
+  }
+ ],
+ "call2_vs_call1": 0.921,
+ "drift": {
+  "eighths_conversion": [
+   0.0295,
+   0.0386,
+   0.0555,
+   0.0633,
+   0.0523,
+   0.1457,
+   0.0806,
+   0.4357
+  ],
+  "eighths_euribor": [
+   4.857,
+   4.885,
+   4.96,
+   4.964,
+   4.704,
+   2.421,
+   1.29,
+   0.888
+  ],
+  "ratio_last_to_first_eighth": 14.76,
+  "corr_monthly_euribor_conversion": -0.6777
+ },
+ "auc": {
+  "typical_all_inputs_random_split": 0.9502,
+  "without_duration_random_split": 0.8026,
+  "precall_random_split": 0.7997,
+  "precall_walk_forward_gradient_boosting": 0.5752,
+  "precall_walk_forward_gradient_boosting_mean_within_month": 0.6459,
+  "precall_walk_forward_logistic": 0.6865,
+  "precall_walk_forward_logistic_mean_within_month": 0.662,
+  "precall_random_split_logistic": 0.7817,
+  "typical_inputs": [
+   "age",
+   "job",
+   "marital",
+   "education",
+   "default",
+   "housing",
+   "loan",
+   "contact",
+   "month",
+   "day_of_week",
+   "duration",
+   "campaign",
+   "pdays",
+   "previous",
+   "poutcome",
+   "emp.var.rate",
+   "cons.price.idx",
+   "cons.conf.idx",
+   "euribor3m",
+   "nr.employed"
+  ],
+  "precall_inputs": [
+   "job",
+   "marital",
+   "education",
+   "default",
+   "housing",
+   "loan",
+   "contact",
+   "poutcome",
+   "age",
+   "previous",
+   "prev_contacted",
+   "pdays_clipped",
+   "emp.var.rate",
+   "cons.price.idx",
+   "cons.conf.idx",
+   "euribor3m",
+   "nr.employed"
+  ]
+ },
+ "frozen_model": {
+  "2009": {
+   "actual": 0.1948,
+   "frozen_gradient_boosting": 0.0558,
+   "frozen_logistic": 0.0,
+   "retrained_gradient_boosting": 0.3673,
+   "retrained_logistic": 0.2135
+  },
+  "2010": {
+   "actual": 0.5214,
+   "frozen_gradient_boosting": 0.0752,
+   "frozen_logistic": 0.0,
+   "retrained_gradient_boosting": 0.4891,
+   "retrained_logistic": 0.5036
+  }
+ },
+ "model_selection": {
+  "rule": "highest share of yeses kept at 50% of calls on the validation window; ties -> simpler model",
+  "candidates": {
+   "logistic": {
+    "features": "pre-call + macro + call number",
+    "yes_kept": {
+     "0.25": 0.5085,
+     "0.5": 0.7051,
+     "0.75": 0.8456
+    },
+    "calls_needed": {
+     "0.9": 0.8653,
+     "0.95": 0.9737
+    },
+    "auc_next_call": 0.6667,
+    "mean_predicted": 0.1031,
+    "mean_observed": 0.0916
+   },
+   "gradient_boosting": {
+    "features": "pre-call + macro + call number",
+    "yes_kept": {
+     "0.25": 0.2307,
+     "0.5": 0.4443,
+     "0.75": 0.6795
+    },
+    "calls_needed": {
+     "0.9": 0.9401,
+     "0.95": 0.9677
+    },
+    "auc_next_call": 0.4625,
+    "mean_predicted": 0.1955,
+    "mean_observed": 0.0916
+   },
+   "logistic_no_macro": {
+    "features": "pre-call + call number (no macro)",
+    "yes_kept": {
+     "0.25": 0.4524,
+     "0.5": 0.6688,
+     "0.75": 0.8645
+    },
+    "calls_needed": {
+     "0.9": 0.7954,
+     "0.95": 0.8812
+    },
+    "auc_next_call": 0.6538,
+    "mean_predicted": 0.0447,
+    "mean_observed": 0.0916
+   },
+   "gradient_boosting_no_macro": {
+    "features": "pre-call + call number (no macro)",
+    "yes_kept": {
+     "0.25": 0.4695,
+     "0.5": 0.667,
+     "0.75": 0.8514
+    },
+    "calls_needed": {
+     "0.9": 0.8153,
+     "0.95": 0.8971
+    },
+    "auc_next_call": 0.6519,
+    "mean_predicted": 0.048,
+    "mean_observed": 0.0916
+   }
+  },
+  "selected": "logistic"
+ },
+ "holdout": {
+  "logistic": {
+   "yes_kept": {
+    "0.25": 0.3747,
+    "0.5": 0.6291,
+    "0.75": 0.8274
+   },
+   "calls_needed": {
+    "0.9": 0.8656,
+    "0.95": 0.9296
+   },
+   "yes_kept_ci": {
+    "0.25": [
+     0.3504,
+     0.4037
+    ],
+    "0.5": [
+     0.6061,
+     0.6549
+    ],
+    "0.75": [
+     0.808,
+     0.8496
+    ]
+   },
+   "auc_next_call": 0.6168,
+   "mean_predicted": 0.2588,
+   "mean_observed": 0.2737
+  },
+  "gradient_boosting": {
+   "yes_kept": {
+    "0.25": 0.3653,
+    "0.5": 0.6221,
+    "0.75": 0.835
+   },
+   "calls_needed": {
+    "0.9": 0.8309,
+    "0.95": 0.9138
+   },
+   "yes_kept_ci": {
+    "0.25": [
+     0.3397,
+     0.3885
+    ],
+    "0.5": [
+     0.5965,
+     0.6465
+    ],
+    "0.75": [
+     0.8123,
+     0.8574
+    ]
+   },
+   "auc_next_call": 0.621,
+   "mean_predicted": 0.2636,
+   "mean_observed": 0.2737
+  },
+  "logistic_no_macro": {
+   "yes_kept": {
+    "0.25": 0.3758,
+    "0.5": 0.6198,
+    "0.75": 0.8276
+   },
+   "calls_needed": {
+    "0.9": 0.836,
+    "0.95": 0.8936
+   },
+   "yes_kept_ci": {
+    "0.25": [
+     0.351,
+     0.4044
+    ],
+    "0.5": [
+     0.596,
+     0.645
+    ],
+    "0.75": [
+     0.8046,
+     0.8481
+    ]
+   },
+   "auc_next_call": 0.6188,
+   "mean_predicted": 0.1684,
+   "mean_observed": 0.2737
+  },
+  "gradient_boosting_no_macro": {
+   "yes_kept": {
+    "0.25": 0.3572,
+    "0.5": 0.6272,
+    "0.75": 0.8183
+   },
+   "calls_needed": {
+    "0.9": 0.8416,
+    "0.95": 0.9023
+   },
+   "yes_kept_ci": {
+    "0.25": [
+     0.3322,
+     0.3817
+    ],
+    "0.5": [
+     0.6035,
+     0.6507
+    ],
+    "0.75": [
+     0.7938,
+     0.84
+    ]
+   },
+   "auc_next_call": 0.6141,
+   "mean_predicted": 0.1846,
+   "mean_observed": 0.2737
+  }
+ },
+ "out_of_sample": {
+  "logistic": {
+   "yes_kept": {
+    "0.25": 0.5435,
+    "0.5": 0.748,
+    "0.75": 0.8775
+   },
+   "calls_needed": {
+    "0.9": 0.8159,
+    "0.95": 0.9385
+   },
+   "yes_kept_ci": {
+    "0.25": [
+     0.5275,
+     0.5605
+    ],
+    "0.5": [
+     0.7326,
+     0.7618
+    ],
+    "0.75": [
+     0.8649,
+     0.8872
+    ]
+   },
+   "auc_next_call": 0.7032,
+   "mean_predicted": 0.1247,
+   "mean_observed": 0.1169
+  },
+  "gradient_boosting": {
+   "yes_kept": {
+    "0.25": 0.2978,
+    "0.5": 0.5417,
+    "0.75": 0.7543
+   },
+   "calls_needed": {
+    "0.9": 0.9206,
+    "0.95": 0.959
+   },
+   "yes_kept_ci": {
+    "0.25": [
+     0.2839,
+     0.3116
+    ],
+    "0.5": [
+     0.5266,
+     0.5558
+    ],
+    "0.75": [
+     0.7415,
+     0.767
+    ]
+   },
+   "auc_next_call": 0.5353,
+   "mean_predicted": 0.205,
+   "mean_observed": 0.1169
+  },
+  "logistic_no_macro": {
+   "yes_kept": {
+    "0.25": 0.5201,
+    "0.5": 0.7228,
+    "0.75": 0.8825
+   },
+   "calls_needed": {
+    "0.9": 0.7802,
+    "0.95": 0.8622
+   },
+   "yes_kept_ci": {
+    "0.25": [
+     0.5055,
+     0.5373
+    ],
+    "0.5": [
+     0.7068,
+     0.7365
+    ],
+    "0.75": [
+     0.8706,
+     0.8932
+    ]
+   },
+   "auc_next_call": 0.6983,
+   "mean_predicted": 0.0619,
+   "mean_observed": 0.1169
+  },
+  "gradient_boosting_no_macro": {
+   "yes_kept": {
+    "0.25": 0.5132,
+    "0.5": 0.7246,
+    "0.75": 0.874
+   },
+   "calls_needed": {
+    "0.9": 0.7948,
+    "0.95": 0.881
+   },
+   "yes_kept_ci": {
+    "0.25": [
+     0.4952,
+     0.5272
+    ],
+    "0.5": [
+     0.7102,
+     0.7383
+    ],
+    "0.75": [
+     0.8623,
+     0.8853
+    ]
+   },
+   "auc_next_call": 0.6946,
+   "mean_predicted": 0.067,
+   "mean_observed": 0.1169
+  }
+ },
+ "baselines": {
+  "out_of_sample": {
+   "client_ranking_gradient_boosting": {
+    "yes_kept": {
+     "0.25": 0.3523,
+     "0.5": 0.5586,
+     "0.75": 0.7652
+    },
+    "calls_needed": {
+     "0.9": 0.905,
+     "0.95": 0.9591
+    },
+    "yes_kept_ci": {
+     "0.25": [
+      0.3363,
+      0.3668
+     ],
+     "0.5": [
+      0.5426,
+      0.5768
+     ],
+     "0.75": [
+      0.7498,
+      0.7785
+     ]
+    }
+   },
+   "client_ranking_logistic": {
+    "yes_kept": {
+     "0.25": 0.5247,
+     "0.5": 0.7037,
+     "0.75": 0.8376
+    },
+    "calls_needed": {
+     "0.9": 0.8354,
+     "0.95": 0.9544
+    },
+    "yes_kept_ci": {
+     "0.25": [
+      0.508,
+      0.5401
+     ],
+     "0.5": [
+      0.6874,
+      0.7184
+     ],
+     "0.75": [
+      0.8239,
+      0.8493
+     ]
+    }
+   },
+   "call_cap": {
+    "points": {
+     "1": {
+      "calls_share": 0.478,
+      "yes_kept": 0.5329
+     },
+     "2": {
+      "calls_share": 0.7228,
+      "yes_kept": 0.7958
+     },
+     "3": {
+      "calls_share": 0.8415,
+      "yes_kept": 0.9115
+     },
+     "4": {
+      "calls_share": 0.9067,
+      "yes_kept": 0.9591
+     },
+     "5": {
+      "calls_share": 0.9454,
+      "yes_kept": 0.98
+     },
+     "6": {
+      "calls_share": 0.968,
+      "yes_kept": 0.9903
+     },
+     "7": {
+      "calls_share": 0.9807,
+      "yes_kept": 0.9961
+     },
+     "8": {
+      "calls_share": 0.9881,
+      "yes_kept": 0.9976
+     },
+     "9": {
+      "calls_share": 0.9922,
+      "yes_kept": 0.9979
+     },
+     "10": {
+      "calls_share": 0.9949,
+      "yes_kept": 0.9991
+     },
+     "11": {
+      "calls_share": 0.9967,
+      "yes_kept": 0.9994
+     },
+     "12": {
+      "calls_share": 0.9978,
+      "yes_kept": 0.9994
+     },
+     "13": {
+      "calls_share": 0.9984,
+      "yes_kept": 0.9997
+     },
+     "14": {
+      "calls_share": 0.9988,
+      "yes_kept": 0.9997
+     },
+     "15": {
+      "calls_share": 0.9992,
+      "yes_kept": 0.9997
+     }
+    },
+    "yes_kept": {
+     "0.25": 0.2787,
+     "0.5": 0.5565,
+     "0.75": 0.8223
+    }
+   }
+  },
+  "validation": {
+   "client_ranking_gradient_boosting": {
+    "yes_kept": {
+     "0.25": 0.2567,
+     "0.5": 0.4749,
+     "0.75": 0.7127
+    },
+    "calls_needed": {
+     "0.9": 0.933,
+     "0.95": 0.9707
+    },
+    "yes_kept_ci": {
+     "0.25": [
+      0.2393,
+      0.2721
+     ],
+     "0.5": [
+      0.4555,
+      0.4963
+     ],
+     "0.75": [
+      0.6944,
+      0.7311
+     ]
+    }
+   },
+   "client_ranking_logistic": {
+    "yes_kept": {
+     "0.25": 0.4538,
+     "0.5": 0.6284,
+     "0.75": 0.7958
+    },
+    "calls_needed": {
+     "0.9": 0.9046,
+     "0.95": 0.9738
+    },
+    "yes_kept_ci": {
+     "0.25": [
+      0.4329,
+      0.4711
+     ],
+     "0.5": [
+      0.6102,
+      0.6478
+     ],
+     "0.75": [
+      0.7811,
+      0.8152
+     ]
+    }
+   },
+   "call_cap": {
+    "points": {
+     "1": {
+      "calls_share": 0.4704,
+      "yes_kept": 0.5337
+     },
+     "2": {
+      "calls_share": 0.7147,
+      "yes_kept": 0.7985
+     },
+     "3": {
+      "calls_share": 0.8341,
+      "yes_kept": 0.9093
+     },
+     "4": {
+      "calls_share": 0.901,
+      "yes_kept": 0.9578
+     },
+     "5": {
+      "calls_share": 0.9416,
+      "yes_kept": 0.9798
+     },
+     "6": {
+      "calls_share": 0.9653,
+      "yes_kept": 0.9883
+     },
+     "7": {
+      "calls_share": 0.9789,
+      "yes_kept": 0.9946
+     },
+     "8": {
+      "calls_share": 0.987,
+      "yes_kept": 0.9969
+     },
+     "9": {
+      "calls_share": 0.9914,
+      "yes_kept": 0.9973
+     },
+     "10": {
+      "calls_share": 0.9944,
+      "yes_kept": 0.9987
+     },
+     "11": {
+      "calls_share": 0.9964,
+      "yes_kept": 0.9991
+     },
+     "12": {
+      "calls_share": 0.9977,
+      "yes_kept": 0.9991
+     },
+     "13": {
+      "calls_share": 0.9983,
+      "yes_kept": 0.9996
+     },
+     "14": {
+      "calls_share": 0.9987,
+      "yes_kept": 0.9996
+     },
+     "15": {
+      "calls_share": 0.9991,
+      "yes_kept": 0.9996
+     }
+    },
+    "yes_kept": {
+     "0.25": 0.2836,
+     "0.5": 0.5658,
+     "0.75": 0.8312
+    }
+   }
+  },
+  "holdout": {
+   "client_ranking_gradient_boosting": {
+    "yes_kept": {
+     "0.25": 0.3614,
+     "0.5": 0.6368,
+     "0.75": 0.8416
+    },
+    "calls_needed": {
+     "0.9": 0.8291,
+     "0.95": 0.8957
+    },
+    "yes_kept_ci": {
+     "0.25": [
+      0.3415,
+      0.3868
+     ],
+     "0.5": [
+      0.6096,
+      0.6604
+     ],
+     "0.75": [
+      0.8197,
+      0.8589
+     ]
+    }
+   },
+   "client_ranking_logistic": {
+    "yes_kept": {
+     "0.25": 0.3719,
+     "0.5": 0.6314,
+     "0.75": 0.8385
+    },
+    "calls_needed": {
+     "0.9": 0.8628,
+     "0.95": 0.9253
+    },
+    "yes_kept_ci": {
+     "0.25": [
+      0.3446,
+      0.402
+     ],
+     "0.5": [
+      0.6069,
+      0.6579
+     ],
+     "0.75": [
+      0.8185,
+      0.8577
+     ]
+    }
+   },
+   "call_cap": {
+    "points": {
+     "1": {
+      "calls_share": 0.5249,
+      "yes_kept": 0.5312
+     },
+     "2": {
+      "calls_share": 0.773,
+      "yes_kept": 0.7903
+     },
+     "3": {
+      "calls_share": 0.8875,
+      "yes_kept": 0.9161
+     },
+     "4": {
+      "calls_share": 0.9419,
+      "yes_kept": 0.9618
+     },
+     "5": {
+      "calls_share": 0.9689,
+      "yes_kept": 0.9804
+     },
+     "6": {
+      "calls_share": 0.9844,
+      "yes_kept": 0.9944
+     },
+     "7": {
+      "calls_share": 0.9921,
+      "yes_kept": 0.9991
+     },
+     "8": {
+      "calls_share": 0.9952,
+      "yes_kept": 0.9991
+     },
+     "9": {
+      "calls_share": 0.9972,
+      "yes_kept": 0.9991
+     },
+     "10": {
+      "calls_share": 0.9982,
+      "yes_kept": 1.0
+     },
+     "11": {
+      "calls_share": 0.9987,
+      "yes_kept": 1.0
+     },
+     "12": {
+      "calls_share": 0.999,
+      "yes_kept": 1.0
+     },
+     "13": {
+      "calls_share": 0.9992,
+      "yes_kept": 1.0
+     },
+     "14": {
+      "calls_share": 0.9995,
+      "yes_kept": 1.0
+     },
+     "15": {
+      "calls_share": 0.9997,
+      "yes_kept": 1.0
+     }
+    },
+    "yes_kept": {
+     "0.25": 0.253,
+     "0.5": 0.5061,
+     "0.75": 0.7663
+    }
+   }
+  }
+ },
+ "paired_differences": {
+  "out_of_sample": {
+   "0.25": {
+    "next_call_minus_client_ranking": {
+     "mean": 0.0199,
+     "ci": [
+      0.0082,
+      0.0308
+     ],
+     "share_of_replicates_positive": 0.999
+    },
+    "next_call_minus_call_cap": {
+     "mean": 0.2651,
+     "ci": [
+      0.2491,
+      0.2816
+     ],
+     "share_of_replicates_positive": 1.0
+    }
+   },
+   "0.5": {
+    "next_call_minus_client_ranking": {
+     "mean": 0.0446,
+     "ci": [
+      0.0344,
+      0.0556
+     ],
+     "share_of_replicates_positive": 1.0
+    },
+    "next_call_minus_call_cap": {
+     "mean": 0.1916,
+     "ci": [
+      0.1736,
+      0.2095
+     ],
+     "share_of_replicates_positive": 1.0
+    }
+   },
+   "0.75": {
+    "next_call_minus_client_ranking": {
+     "mean": 0.0401,
+     "ci": [
+      0.0309,
+      0.0496
+     ],
+     "share_of_replicates_positive": 1.0
+    },
+    "next_call_minus_call_cap": {
+     "mean": 0.0542,
+     "ci": [
+      0.0394,
+      0.0695
+     ],
+     "share_of_replicates_positive": 1.0
+    }
+   }
+  },
+  "validation": {
+   "0.25": {
+    "next_call_minus_client_ranking": {
+     "mean": 0.055,
+     "ci": [
+      0.0417,
+      0.068
+     ],
+     "share_of_replicates_positive": 1.0
+    },
+    "next_call_minus_call_cap": {
+     "mean": 0.2242,
+     "ci": [
+      0.2038,
+      0.2441
+     ],
+     "share_of_replicates_positive": 1.0
+    }
+   },
+   "0.5": {
+    "next_call_minus_client_ranking": {
+     "mean": 0.0761,
+     "ci": [
+      0.0609,
+      0.0906
+     ],
+     "share_of_replicates_positive": 1.0
+    },
+    "next_call_minus_call_cap": {
+     "mean": 0.1389,
+     "ci": [
+      0.1156,
+      0.161
+     ],
+     "share_of_replicates_positive": 1.0
+    }
+   },
+   "0.75": {
+    "next_call_minus_client_ranking": {
+     "mean": 0.0474,
+     "ci": [
+      0.0338,
+      0.0598
+     ],
+     "share_of_replicates_positive": 1.0
+    },
+    "next_call_minus_call_cap": {
+     "mean": 0.0139,
+     "ci": [
+      -0.0045,
+      0.0309
+     ],
+     "share_of_replicates_positive": 0.935
+    }
+   }
+  },
+  "holdout": {
+   "0.25": {
+    "next_call_minus_client_ranking": {
+     "mean": 0.0033,
+     "ci": [
+      -0.0056,
+      0.0145
+     ],
+     "share_of_replicates_positive": 0.704
+    },
+    "next_call_minus_call_cap": {
+     "mean": 0.123,
+     "ci": [
+      0.0945,
+      0.1487
+     ],
+     "share_of_replicates_positive": 1.0
+    }
+   },
+   "0.5": {
+    "next_call_minus_client_ranking": {
+     "mean": -0.0027,
+     "ci": [
+      -0.017,
+      0.012
+     ],
+     "share_of_replicates_positive": 0.332
+    },
+    "next_call_minus_call_cap": {
+     "mean": 0.1227,
+     "ci": [
+      0.088,
+      0.1541
+     ],
+     "share_of_replicates_positive": 1.0
+    }
+   },
+   "0.75": {
+    "next_call_minus_client_ranking": {
+     "mean": -0.0092,
+     "ci": [
+      -0.0204,
+      0.0038
+     ],
+     "share_of_replicates_positive": 0.073
+    },
+    "next_call_minus_call_cap": {
+     "mean": 0.0624,
+     "ci": [
+      0.0323,
+      0.089
+     ],
+     "share_of_replicates_positive": 1.0
+    }
+   }
+  }
+ },
+ "calibration_deciles": [
+  {
+   "predicted": 0.0233,
+   "observed": 0.0747,
+   "n": 2825
+  },
+  {
+   "predicted": 0.0486,
+   "observed": 0.0506,
+   "n": 2824
+  },
+  {
+   "predicted": 0.0614,
+   "observed": 0.0531,
+   "n": 2824
+  },
+  {
+   "predicted": 0.0737,
+   "observed": 0.0563,
+   "n": 2824
+  },
+  {
+   "predicted": 0.0854,
+   "observed": 0.0598,
+   "n": 2824
+  },
+  {
+   "predicted": 0.0976,
+   "observed": 0.0747,
+   "n": 2824
+  },
+  {
+   "predicted": 0.1165,
+   "observed": 0.1002,
+   "n": 2824
+  },
+  {
+   "predicted": 0.1441,
+   "observed": 0.1369,
+   "n": 2827
+  },
+  {
+   "predicted": 0.2031,
+   "observed": 0.2247,
+   "n": 2821
+  },
+  {
+   "predicted": 0.3933,
+   "observed": 0.3378,
+   "n": 2824
+  }
+ ],
+ "safeguards": {
+  "rule": "shadow mode in the first live month; monthly recalibration-in-the-large; drift alarm (back to shadow) when last month's odds were off by more than 3x",
+  "alarm_log_odds": 1.0986,
+  "months": {
+   "2009-03": {
+    "status": "shadow (first month)",
+    "shift": null
+   },
+   "2009-04": {
+    "status": "shadow (drift alarm)",
+    "shift": 9.876
+   },
+   "2009-05": {
+    "status": "active",
+    "shift": -0.205
+   },
+   "2009-06": {
+    "status": "active",
+    "shift": -0.745
+   },
+   "2009-07": {
+    "status": "active",
+    "shift": 0.39
+   },
+   "2009-08": {
+    "status": "active",
+    "shift": 1.018
+   },
+   "2009-09": {
+    "status": "active",
+    "shift": 0.965
+   },
+   "2009-10": {
+    "status": "active",
+    "shift": -0.213
+   },
+   "2009-11": {
+    "status": "active",
+    "shift": -0.026
+   },
+   "2009-12": {
+    "status": "active",
+    "shift": -0.273
+   },
+   "2010-03": {
+    "status": "active",
+    "shift": 0.153
+   },
+   "2010-04": {
+    "status": "shadow (drift alarm)",
+    "shift": 1.558
+   },
+   "2010-05": {
+    "status": "active",
+    "shift": 0.153
+   },
+   "2010-06": {
+    "status": "active",
+    "shift": 0.158
+   },
+   "2010-07": {
+    "status": "active",
+    "shift": -0.26
+   },
+   "2010-08": {
+    "status": "active",
+    "shift": -0.285
+   },
+   "2010-09": {
+    "status": "active",
+    "shift": -0.159
+   },
+   "2010-10": {
+    "status": "active",
+    "shift": 0.089
+   },
+   "2010-11": {
+    "status": "active",
+    "shift": -0.071
+   }
+  },
+  "active_share_of_calls": 0.7935,
+  "shadow_share_of_calls": 0.2065
+ },
+ "regime_break": {
+  "period": "2009-03",
+  "calls": 708,
+  "observed_success_rate": 0.178,
+  "mean_predicted_unguarded": 0.0,
+  "share_predicted_below_1pct": 1.0
+ },
+ "calibration_guarded_deciles": [
+  {
+   "predicted": 0.0287,
+   "observed": 0.0308,
+   "n": 2241
+  },
+  {
+   "predicted": 0.0415,
+   "observed": 0.0388,
+   "n": 2242
+  },
+  {
+   "predicted": 0.0513,
+   "observed": 0.0366,
+   "n": 2240
+  },
+  {
+   "predicted": 0.0622,
+   "observed": 0.0554,
+   "n": 2240
+  },
+  {
+   "predicted": 0.0715,
+   "observed": 0.0625,
+   "n": 2241
+  },
+  {
+   "predicted": 0.0803,
+   "observed": 0.0723,
+   "n": 2241
+  },
+  {
+   "predicted": 0.095,
+   "observed": 0.1067,
+   "n": 2240
+  },
+  {
+   "predicted": 0.1494,
+   "observed": 0.1812,
+   "n": 2241
+  },
+  {
+   "predicted": 0.2357,
+   "observed": 0.2472,
+   "n": 2241
+  },
+  {
+   "predicted": 0.4396,
+   "observed": 0.3449,
+   "n": 2241
+  }
+ ],
+ "money_rule": {
+  "note": "Profit change vs. making every call the bank actually made, in units of the cost of one call; a subscription is worth `ratio` calls. Hindsight best = best threshold chosen after seeing outcomes (not achievable live; shown for reference).",
+  "totals": {
+   "calls": 28241,
+   "yes": 3301,
+   "clients": 13498
+  },
+  "by_value_to_cost": {
+   "10": {
+    "threshold": 0.1,
+    "calls_made": 13146,
+    "calls_share": 0.4655,
+    "yes_kept": 2478,
+    "yes_kept_share": 0.7507,
+    "cut_calls": 15095,
+    "cut_calls_success_rate": 0.0545,
+    "profit_gain_in_call_costs": 6865.0,
+    "profit_gain_per_1000_clients": 508.6,
+    "hindsight_best_threshold": 0.1,
+    "hindsight_best_gain": 6865.0
+   },
+   "20": {
+    "threshold": 0.05,
+    "calls_made": 22881,
+    "calls_share": 0.8102,
+    "yes_kept": 3116,
+    "yes_kept_share": 0.944,
+    "cut_calls": 5360,
+    "cut_calls_success_rate": 0.0345,
+    "profit_gain_in_call_costs": 1660.0,
+    "profit_gain_per_1000_clients": 123.0,
+    "hindsight_best_threshold": 0.0565,
+    "hindsight_best_gain": 1996.0
+   },
+   "30": {
+    "threshold": 0.0333,
+    "calls_made": 26671,
+    "calls_share": 0.9444,
+    "yes_kept": 3263,
+    "yes_kept_share": 0.9885,
+    "cut_calls": 1570,
+    "cut_calls_success_rate": 0.0242,
+    "profit_gain_in_call_costs": 430.0,
+    "profit_gain_per_1000_clients": 31.9,
+    "hindsight_best_threshold": 0.0333,
+    "hindsight_best_gain": 430.0
+   },
+   "50": {
+    "threshold": 0.02,
+    "calls_made": 27975,
+    "calls_share": 0.9906,
+    "yes_kept": 3296,
+    "yes_kept_share": 0.9985,
+    "cut_calls": 266,
+    "cut_calls_success_rate": 0.0188,
+    "profit_gain_in_call_costs": 16.0,
+    "profit_gain_per_1000_clients": 1.2,
+    "hindsight_best_threshold": 0.0188,
+    "hindsight_best_gain": 59.0
+   }
+  }
+ },
+ "example_rule": {
+  "threshold": 0.05,
+  "model": "logistic",
+  "policy": "guarded (shadow + recalibration + drift alarm)",
+  "calls_share": 0.8102,
+  "yes_kept": 0.944,
+  "by_age": {
+   "under 25": {
+    "clients": 671,
+    "subscribed": 231,
+    "yes_kept_share": 0.974,
+    "calls_share": 0.8928,
+    "contacted_share": 0.9493
+   },
+   "25-60": {
+    "clients": 11918,
+    "subscribed": 2656,
+    "yes_kept_share": 0.9337,
+    "calls_share": 0.7929,
+    "contacted_share": 0.8606
+   },
+   "over 60": {
+    "clients": 909,
+    "subscribed": 414,
+    "yes_kept_share": 0.9928,
+    "calls_share": 0.986,
+    "contacted_share": 0.9912
+   }
+  }
+ },
+ "glm": {
+  "formula": "event ~ call number + age group + contact + poutcome + euribor3m (logistic, one row per call, all 105,754 calls)",
+  "n_rows": 105754,
+  "odds_ratios": {
+   "Intercept": {
+    "or_": 0.1484,
+    "ci": [
+     0.1351,
+     0.163
+    ]
+   },
+   "C(call)[T.c02]": {
+    "or_": 1.0118,
+    "ci": [
+     0.9384,
+     1.091
+    ]
+   },
+   "C(call)[T.c03]": {
+    "or_": 0.9728,
+    "ci": [
+     0.8819,
+     1.0731
+    ]
+   },
+   "C(call)[T.c04]": {
+    "or_": 0.7546,
+    "ci": [
+     0.6575,
+     0.8662
+    ]
+   },
+   "C(call)[T.c05]": {
+    "or_": 0.5878,
+    "ci": [
+     0.4857,
+     0.7114
+    ]
+   },
+   "C(call)[T.c06_09]": {
+    "or_": 0.4971,
+    "ci": [
+     0.4184,
+     0.5906
+    ]
+   },
+   "C(call)[T.c10plus]": {
+    "or_": 0.2853,
+    "ci": [
+     0.2069,
+     0.3934
+    ]
+   },
+   "C(age_group, Treatment('a_25_60'))[T.a_lt25]": {
+    "or_": 1.4373,
+    "ci": [
+     1.2462,
+     1.6579
+    ]
+   },
+   "C(age_group, Treatment('a_25_60'))[T.a_gt60]": {
+    "or_": 1.9566,
+    "ci": [
+     1.7285,
+     2.2147
+    ]
+   },
+   "C(contact)[T.telephone]": {
+    "or_": 0.6655,
+    "ci": [
+     0.6107,
+     0.7252
+    ]
+   },
+   "C(poutcome)[T.nonexistent]": {
+    "or_": 1.3816,
+    "ci": [
+     1.2561,
+     1.5198
+    ]
+   },
+   "C(poutcome)[T.success]": {
+    "or_": 5.6064,
+    "ci": [
+     4.9819,
+     6.3093
+    ]
+   },
+   "euribor": {
+    "or_": 0.6389,
+    "ci": [
+     0.6253,
+     0.6528
+    ]
+   }
+  },
+  "coefficients": {
+   "Intercept": -1.9077564561990947,
+   "C(call)[T.c02]": 0.011765252496167776,
+   "C(call)[T.c03]": -0.02756616617532186,
+   "C(call)[T.c04]": -0.28150572750203834,
+   "C(call)[T.c05]": -0.5313092169061511,
+   "C(call)[T.c06_09]": -0.6989525506787696,
+   "C(call)[T.c10plus]": -1.254111816613416,
+   "C(age_group, Treatment('a_25_60'))[T.a_lt25]": 0.3628011199489755,
+   "C(age_group, Treatment('a_25_60'))[T.a_gt60]": 0.6711866860353957,
+   "C(contact)[T.telephone]": -0.40724878875749726,
+   "C(poutcome)[T.nonexistent]": 0.32327138703612407,
+   "C(poutcome)[T.success]": 1.7239113852233412,
+   "euribor": -0.4479662841341703
+  }
+ },
+ "protocol": {
+  "seed": 20140301,
+  "test_start": "2009-03",
+  "holdout_start": "2010-03",
+  "selection_budget": 0.5,
+  "budgets": [
+   0.25,
+   0.5,
+   0.75
+  ]
+ }
+}
