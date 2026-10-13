@@ -2,6 +2,8 @@
 
 **When should a bank stop calling a client?**
 
+By Edwin Tan · [GitHub](https://github.com/yifeng22100)
+
 A next-call model, a stopping rule priced in money, deployment safeguards and a pilot plan, built on the UCI Bank Marketing data (41,188 clients, 105,754 calls, May 2008 to November 2010). It is tested month by month on data the model never saw, and every published figure is computed three independent ways.
 
 **Live site:** https://yifeng22100.github.io/the-last-call/ (interactive simulator and AI analyst)
